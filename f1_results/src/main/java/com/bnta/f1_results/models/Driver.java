@@ -25,7 +25,9 @@ public class Driver {
     @Column
     private String nationality;
 
-    @ManyToMany()
+    @ManyToMany(mappedBy = "")
+    @JsonIgnoreProperties(value = "drivers")
+
     @JoinTable(
             name = "drivers_races",
             joinColumns = {@JoinColumn(name = "driver_id", nullable = false)},

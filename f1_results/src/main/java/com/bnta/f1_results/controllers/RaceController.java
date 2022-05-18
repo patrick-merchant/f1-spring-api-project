@@ -18,12 +18,13 @@ public class RaceController {
     @Autowired
     private RaceRepository raceRepository;
 
+    // INDEX
     @GetMapping
     public ResponseEntity<List<Race>> getRaces() {
         return new ResponseEntity<>(raceRepository.findAll(), HttpStatus.OK);
     }
 
-    // show mapping
+    // SHOW
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Race>> getRace(@PathVariable Long id) {
         var race = raceRepository.findById(id);
@@ -31,13 +32,15 @@ public class RaceController {
         return new ResponseEntity<>(race, race.isEmpty() ?  HttpStatus.NOT_FOUND : HttpStatus.OK);
     }
 
-    // create/post
+    // POST
     @PostMapping
-    public void createRace(@RequestBody Race race) {
-        raceRepository.save(race);
+    public ResponseEntity<Race> createRace(@RequestBody Race newRace) {
+        raceRepository.save(newRace);
+        return new ResponseEntity<>(newRace, HttpStatus.CREATED);
+
     }
 
     // todo: add delete.
+    // DELETE
 
-    // todo: add controllers for Driver and Team
 }

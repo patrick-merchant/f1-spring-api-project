@@ -18,12 +18,13 @@ public class DriverController {
     @Autowired
     private DriverRepository driverRepository;
 
+    // INDEX
     @GetMapping
     public ResponseEntity<List<Driver>> getDrivers() {
         return new ResponseEntity<>(driverRepository.findAll(), HttpStatus.OK);
     }
 
-    // show mapping
+    // SHOW
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Driver>> getDriver(@PathVariable Long id) {
         var driver = driverRepository.findById(id);
@@ -31,12 +32,14 @@ public class DriverController {
         return new ResponseEntity<>(driver, driver.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK);
     }
 
-    // create/post
+    // POST
     @PostMapping
-    public void createDriver(@RequestBody Driver driver) {
-        driverRepository.save(driver);
+    public ResponseEntity createDriver(@RequestBody Driver newDriver) {
+        driverRepository.save(newDriver);
+        return new ResponseEntity<>(newDriver, HttpStatus.CREATED);
     }
 
     // todo: add delete.
+    // DELETE
 }
 

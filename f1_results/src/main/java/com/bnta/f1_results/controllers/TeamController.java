@@ -17,24 +17,34 @@ public class TeamController {
     @Autowired
     private TeamRepository teamRepository;
 
+    // INDEX
     @GetMapping
     public ResponseEntity<List<Team>> getTeams() {
         return new ResponseEntity<>(teamRepository.findAll(), HttpStatus.OK);
     }
 
-    // show mapping
-    @GetMapping("/{id}")
+    // SHOW
+    @GetMapping(value = "/{id}")
     public ResponseEntity<Optional<Team>> getTeam(@PathVariable Long id) {
         var team = teamRepository.findById(id);
         // ternary operator: condition ? true statement : false statement
         return new ResponseEntity<>(team, team.isEmpty() ?  HttpStatus.NOT_FOUND : HttpStatus.OK);
+        // todo: check this ternary operator is working correctly.
+
     }
 
-    // create/post
+    // POST
     @PostMapping
-    public void createTeam(@RequestBody Team team) {
-        teamRepository.save(team);
+    public ResponseEntity<Team> createTeam(@RequestBody Team newTeam) {
+        teamRepository.save(newTeam);
+        return new ResponseEntity<>(newTeam, HttpStatus.CREATED);
     }
-    // todo: add delete.
 
+    // todo: add delete.
+//     DELETE
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Long> deleteTeam (@PathVariable("id") Long id) {
+        teamRepository.deleteById(id);
+        return new ResponseEntity<>(id, HttpStatus.OK);
+    }
 }
