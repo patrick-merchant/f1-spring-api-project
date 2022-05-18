@@ -20,7 +20,7 @@ public class Driver {
 
     @ManyToOne
     @JoinColumn(name = "team_id")
-    private String team;
+    private Team team;
 
     @Column
     private String nationality;
@@ -36,7 +36,7 @@ public class Driver {
     public Driver() {
     }
 
-    public Driver(String name, String team, String nationality) {
+    public Driver(String name, Team team, String nationality) {
         this.name = name;
         this.team = team;
         this.nationality = nationality;
@@ -55,11 +55,11 @@ public class Driver {
         this.name = name;
     }
 
-    public String getTeam() {
+    public Team getTeam() {
         return team;
     }
 
-    public void setTeam(String team) {
+    public void setTeam(Team team) {
         this.team = team;
     }
 

@@ -31,9 +31,13 @@ public class RaceController {
         return new ResponseEntity<>(race, race.isEmpty() ?  HttpStatus.NOT_FOUND : HttpStatus.OK);
     }
 
-    // create
+    // create/post
     @PostMapping
     public void createRace(@RequestBody Race race) {
         raceRepository.save(race);
     }
+
+    // todo: add delete.
+
+    // todo: add controllers for Driver and Team
 }
