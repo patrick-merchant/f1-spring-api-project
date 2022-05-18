@@ -40,7 +40,10 @@ public class RaceController {
 
     }
 
-    // todo: add delete.
     // DELETE
-
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Long> deleteRace (@PathVariable("id") Long id) {
+        raceRepository.deleteById(id);
+        return new ResponseEntity<>(id, HttpStatus.OK);
+    }
 }

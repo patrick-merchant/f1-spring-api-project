@@ -40,7 +40,6 @@ public class TeamController {
         return new ResponseEntity<>(newTeam, HttpStatus.CREATED);
     }
 
-    // todo: add delete.
 //     DELETE
     @DeleteMapping("/{id}")
     public ResponseEntity<Long> deleteTeam (@PathVariable("id") Long id) {

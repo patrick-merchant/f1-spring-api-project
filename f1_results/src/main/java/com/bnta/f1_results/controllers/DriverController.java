@@ -39,7 +39,11 @@ public class DriverController {
         return new ResponseEntity<>(newDriver, HttpStatus.CREATED);
     }
 
-    // todo: add delete.
-    // DELETE
+    //     DELETE
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Long> deleteDriver (@PathVariable("id") Long id) {
+        driverRepository.deleteById(id);
+        return new ResponseEntity<>(id, HttpStatus.OK);
+    }
 }
 
