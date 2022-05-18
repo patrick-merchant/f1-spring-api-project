@@ -1,14 +1,21 @@
 package com.bnta.f1_results.models;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "teams")
 public class Team {
 
+    @Id
+    @GeneratedValue
     private Long id;
 
+    @Column
     private String name;
 
+    @OneToMany(mappedBy = "team")
     private List<Driver> teamDrivers;
 
 

@@ -1,18 +1,31 @@
 package com.bnta.f1_results.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "races")
 public class Race {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private Long id;
 
+    @Column
     private String name;
 
+    @Column
     private String country;
 
+    @Column
     private int year;
 
+    @ManyToMany(mappedBy = "")
+    @JsonIgnoreProperties(value = "races")
     private List<Driver> raceDrivers;
 
     public Race() {
