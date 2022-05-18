@@ -33,6 +33,8 @@ public class Driver {
             inverseJoinColumns = {@JoinColumn(name = "race_id", nullable = false)}
     )
     private List<Race> races;
+    // todo: populate this table? Add some points and positions?
+
 
     public Driver() {
     }
