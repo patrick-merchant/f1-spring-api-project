@@ -17,13 +17,14 @@ public class Team {
     @Column
     private String name;
 
-    @OneToMany(mappedBy = "")
-    @JsonIgnoreProperties(value = "teams")
+    @OneToMany(mappedBy = "team")
+    @JsonIgnoreProperties({"team"})
     private List<Driver> teamDrivers;
+
     // TODO: 18/05/2022 Work out how this list is populated
 
     // todo: make ManyToMany Join with teams_races, along with teamPoints.
-    public Team() {
+    protected Team() {
     }
 
     public Team(String name) {

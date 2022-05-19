@@ -19,7 +19,7 @@ public class Driver {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "team_id")
+    @JoinColumn(name = "team_id", nullable = false)
     private Team team;
 
     @Column
@@ -29,7 +29,7 @@ public class Driver {
     @ManyToMany(mappedBy = "drivers")
     @JsonIgnoreProperties({"drivers"})
     private List<Race> races;
-    // todo: populate this table? Add some points and positions?
+    // todo: Add some points and positions?
 
 
     public Driver() {
