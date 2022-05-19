@@ -19,6 +19,7 @@ public class Driver {
     private String name;
 
     @ManyToOne
+    @JsonIgnoreProperties({"driver"})
     @JoinColumn(name = "team_id", nullable = false)
     private Team team;
 

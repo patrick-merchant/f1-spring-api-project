@@ -25,9 +25,9 @@ public class Team {
 
     // todo: make ManyToMany Join with teams_races, along with teamPoints.
 
-    @ManyToMany(mappedBy = "teams")
-    @JsonIgnoreProperties({"teams"})
-    private List<Race> races;
+//    @ManyToMany(mappedBy = "teams")
+//    @JsonIgnoreProperties({"teams"})
+//    private List<Race> races;
 
     protected Team() {
     }
@@ -35,7 +35,7 @@ public class Team {
     public Team(String name) {
         this.name = name;
         this.teamDrivers = new ArrayList<>();
-        this.races = new ArrayList<>();
+//        this.races = new ArrayList<>();
     }
 
     public Long getId() {
@@ -57,14 +57,14 @@ public class Team {
     public void setTeamDrivers(List<Driver> teamDrivers) {
         this.teamDrivers = teamDrivers;
     }
-
-    public List<Race> getRaces() {
-        return races;
-    }
-
-    public void setRaces(List<Race> races) {
-        this.races = races;
-    }
+//
+//    public List<Race> getRaces() {
+//        return races;
+//    }
+//
+//    public void setRaces(List<Race> races) {
+//        this.races = races;
+//    }
 
     @Override
     public String toString() {
@@ -72,7 +72,6 @@ public class Team {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", teamDrivers=" + teamDrivers +
-                ", races=" + races +
                 '}';
     }
 }

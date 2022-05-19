@@ -25,31 +25,31 @@ public class Race {
 
 
     @ManyToMany
+    @JsonIgnoreProperties({"races"})
     @JoinTable(
             name = "races_drivers",
             joinColumns = {@JoinColumn(name = "race_id", nullable = false)},
             inverseJoinColumns = {@JoinColumn(name = "driver_id", nullable = false)})
-    @JsonIgnoreProperties({"races"})
     private List<Driver> drivers;
     // todo: Add some points and positions?
-
-    @ManyToMany
-    @JoinTable(
-            name = "races_teams",
-            joinColumns = {@JoinColumn(name = "race_id", nullable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "team_id", nullable = false)})
-    @JsonIgnoreProperties({"races"})
-    private List<Team> teams;
+//
+//    @ManyToMany
+//    @JsonIgnoreProperties({"races"})
+//    @JoinTable(
+//            name = "races_teams",
+//            joinColumns = {@JoinColumn(name = "race_id", nullable = false)},
+//            inverseJoinColumns = {@JoinColumn(name = "team_id", nullable = false)})
+//    private List<Team> teams;
 
     public Race() {
     }
 
-    public Race(String name, String country, int year, List<Driver> drivers, List<Team> teams) {
+    public Race(String name, String country, int year, List<Driver> drivers) {
         this.name = name;
         this.country = country;
         this.year = year;
         this.drivers = drivers;
-        this.teams = teams;
+//        this.teams = teams;
     }
 
     public Long getId() {
@@ -88,13 +88,13 @@ public class Race {
         this.drivers = drivers;
     }
 
-    public List<Team> getTeams() {
-        return teams;
-    }
-
-    public void setTeams(List<Team> teams) {
-        this.teams = teams;
-    }
+//    public List<Team> getTeams() {
+//        return teams;
+//    }
+//
+//    public void setTeams(List<Team> teams) {
+//        this.teams = teams;
+//    }
 
     @Override
     public String toString() {
@@ -104,7 +104,6 @@ public class Race {
                 ", country='" + country + '\'' +
                 ", year=" + year +
                 ", drivers=" + drivers +
-                ", teams=" + teams +
                 '}';
     }
 }
