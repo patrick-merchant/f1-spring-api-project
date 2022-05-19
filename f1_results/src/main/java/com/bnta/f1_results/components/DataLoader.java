@@ -76,21 +76,29 @@ public class DataLoader implements ApplicationRunner {
 
         // Add some races
         Race miami22 = new Race("Miami Grand Prix", "United States", 2022,
-                Arrays.asList(verstappen, leclerc, sainz, checo, russell, hamilton, bottas, ocon, albon, stroll, alonso, tsunoda, dannyric, latifi, mick, kMag, vettel, gasly, norris, zhou));
+                Arrays.asList(verstappen, leclerc, sainz, checo, russell, hamilton, bottas, ocon, albon, stroll, alonso, tsunoda, dannyric, latifi, mick, kMag, vettel, gasly, norris, zhou),
+                Arrays.asList(mercedes, redBull, ferrari, mclaren, alphaTauri, alfaRomeo, williams, astonMartin, alpine, haas));
         Race bahrain22 = new Race("Bahrain Grand Prix", "Bahrain", 2022,
-                Arrays.asList(leclerc, sainz, hamilton, russell, kMag, bottas, ocon, tsunoda, alonso, zhou, mick, stroll, albon, dannyric, norris, latifi, hulk, checo, verstappen, gasly));
+                Arrays.asList(leclerc, sainz, hamilton, russell, kMag, bottas, ocon, tsunoda, alonso, zhou, mick, stroll, albon, dannyric, norris, latifi, hulk, checo, verstappen, gasly),
+                Arrays.asList(mercedes, redBull, ferrari, mclaren, alphaTauri, alfaRomeo, williams, astonMartin, alpine, haas));
         Race saudi22 = new Race("Saudi Arabia Grand Prix", "Saudi Arabia", 2022,
-                Arrays.asList(verstappen, leclerc, sainz, checo, russell, ocon, norris, gasly, kMag, hamilton, zhou, hulk, stroll, albon, bottas, alonso, dannyric, latifi, tsunoda, mick));
+                Arrays.asList(verstappen, leclerc, sainz, checo, russell, ocon, norris, gasly, kMag, hamilton, zhou, hulk, stroll, albon, bottas, alonso, dannyric, latifi, tsunoda, mick),
+                Arrays.asList(mercedes, redBull, ferrari, mclaren, alphaTauri, alfaRomeo, williams, astonMartin, alpine, haas));
         Race aus22 = new Race("Australian Grand Prix", "Australia", 2022,
-                Arrays.asList(leclerc, checo, russell, hamilton, norris, dannyric, ocon, bottas, gasly, albon, zhou, stroll, mick, kMag, tsunoda, latifi, alonso, verstappen, vettel, sainz));
+                Arrays.asList(leclerc, checo, russell, hamilton, norris, dannyric, ocon, bottas, gasly, albon, zhou, stroll, mick, kMag, tsunoda, latifi, alonso, verstappen, vettel, sainz),
+                Arrays.asList(mercedes, redBull, ferrari, mclaren, alphaTauri, alfaRomeo, williams, astonMartin, alpine, haas));
         Race imola22 = new Race("Emilia Romagna Grand Prix", "Italy", 2022,
-                Arrays.asList(verstappen, checo, norris, russell, bottas, leclerc, tsunoda, vettel, kMag, stroll, albon, gasly, hamilton, ocon, zhou, latifi, mick, dannyric, alonso, sainz));
+                Arrays.asList(verstappen, checo, norris, russell, bottas, leclerc, tsunoda, vettel, kMag, stroll, albon, gasly, hamilton, ocon, zhou, latifi, mick, dannyric, alonso, sainz),
+                Arrays.asList(mercedes, redBull, ferrari, mclaren, alphaTauri, alfaRomeo, williams, astonMartin, alpine, haas));
         Race bahrain21 = new Race("Bahrain Grand Prix", "Bahrain", 2021,
-                Arrays.asList(hamilton, verstappen, bottas, norris, checo, leclerc, dannyric, sainz, tsunoda, stroll, kimi, giovinazzi, ocon, russell, vettel, mick, gasly, latifi, alonso, mazespin));
+                Arrays.asList(hamilton, verstappen, bottas, norris, checo, leclerc, dannyric, sainz, tsunoda, stroll, kimi, giovinazzi, ocon, russell, vettel, mick, gasly, latifi, alonso, mazespin),
+                Arrays.asList(mercedes, redBull, ferrari, mclaren, alphaTauri, alfaRomeo, williams, astonMartin, alpine, haas));
         Race imola21 = new Race("Emilia Romagna Grand Prix", "Italy", 2021,
-                Arrays.asList(verstappen, hamilton, norris, leclerc, sainz, dannyric, gasly, stroll, ocon, alonso, checo, tsunoda, kimi, giovinazzi, vettel, mick, mazespin, bottas, russell, latifi));
+                Arrays.asList(verstappen, hamilton, norris, leclerc, sainz, dannyric, gasly, stroll, ocon, alonso, checo, tsunoda, kimi, giovinazzi, vettel, mick, mazespin, bottas, russell, latifi),
+                Arrays.asList(mercedes, redBull, ferrari, mclaren, alphaTauri, alfaRomeo, williams, astonMartin, alpine, haas));
         Race saudi21 = new Race("Saudi Arabia Grand Prix", "Saudi Arabia", 2021,
-                Arrays.asList(hamilton, verstappen, bottas, ocon, dannyric, gasly, leclerc, sainz, giovinazzi, norris, stroll, latifi, alonso, tsunoda, kimi, vettel, checo, mazespin, russell, mick));
+                Arrays.asList(hamilton, verstappen, bottas, ocon, dannyric, gasly, leclerc, sainz, giovinazzi, norris, stroll, latifi, alonso, tsunoda, kimi, vettel, checo, mazespin, russell, mick),
+                Arrays.asList(mercedes, redBull, ferrari, mclaren, alphaTauri, alfaRomeo, williams, astonMartin, alpine, haas));
         raceRepository.saveAll(Arrays.asList(miami22, bahrain22, saudi22, aus22, imola22, bahrain21,
                 imola21, saudi21));
     }

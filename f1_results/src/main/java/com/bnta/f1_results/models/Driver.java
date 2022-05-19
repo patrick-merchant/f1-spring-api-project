@@ -25,12 +25,9 @@ public class Driver {
     @Column
     private String nationality;
 
-
     @ManyToMany(mappedBy = "drivers")
     @JsonIgnoreProperties({"drivers"})
     private List<Race> races;
-    // todo: Add some points and positions?
-
 
     public Driver() {
     }
@@ -76,5 +73,16 @@ public class Driver {
 
     public void setRaces(List<Race> races) {
         this.races = races;
+    }
+
+    @Override
+    public String toString() {
+        return "Driver{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", team=" + team +
+                ", nationality='" + nationality + '\'' +
+                ", races=" + races +
+                '}';
     }
 }

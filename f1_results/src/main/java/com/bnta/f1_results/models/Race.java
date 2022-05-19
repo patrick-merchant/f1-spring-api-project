@@ -3,6 +3,7 @@ package com.bnta.f1_results.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -30,15 +31,25 @@ public class Race {
             inverseJoinColumns = {@JoinColumn(name = "driver_id", nullable = false)})
     @JsonIgnoreProperties({"races"})
     private List<Driver> drivers;
+    // todo: Add some points and positions?
+
+    @ManyToMany
+    @JoinTable(
+            name = "races_teams",
+            joinColumns = {@JoinColumn(name = "race_id", nullable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "team_id", nullable = false)})
+    @JsonIgnoreProperties({"races"})
+    private List<Team> teams;
 
     public Race() {
     }
 
-    public Race(String name, String country, int year, List<Driver> drivers) {
+    public Race(String name, String country, int year, List<Driver> drivers, List<Team> teams) {
         this.name = name;
         this.country = country;
         this.year = year;
         this.drivers = drivers;
+        this.teams = teams;
     }
 
     public Long getId() {
@@ -77,6 +88,14 @@ public class Race {
         this.drivers = drivers;
     }
 
+    public List<Team> getTeams() {
+        return teams;
+    }
+
+    public void setTeams(List<Team> teams) {
+        this.teams = teams;
+    }
+
     @Override
     public String toString() {
         return "Race{" +
@@ -84,7 +103,8 @@ public class Race {
                 ", name='" + name + '\'' +
                 ", country='" + country + '\'' +
                 ", year=" + year +
-                ", raceDrivers=" + drivers +
+                ", drivers=" + drivers +
+                ", teams=" + teams +
                 '}';
     }
 }
