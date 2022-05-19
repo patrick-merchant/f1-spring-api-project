@@ -1,12 +1,14 @@
 package com.bnta.f1_results.controllers;
 
 import com.bnta.f1_results.models.Driver;
+import com.bnta.f1_results.models.Race;
 import com.bnta.f1_results.repositories.DriverRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.PreparedStatement;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,9 +20,25 @@ public class DriverController {
     @Autowired
     private DriverRepository driverRepository;
 
-    // INDEX
+//    // INDEX
+//    @GetMapping
+//    public ResponseEntity<List<Driver>> getDrivers() {
+//        return new ResponseEntity<>(driverRepository.findAll(), HttpStatus.OK);
+//    }
+
+
+    // INDEX AND FILTERS:
+    // GET /drivers
+    // GET /drivers?nationality=German
+    // GET /drivers?
+
     @GetMapping
-    public ResponseEntity<List<Driver>> getDrivers() {
+    public ResponseEntity<List<Driver>> getAllDriversAndFilters(
+            @RequestParam(required = false, name = "nationality") String nationality
+    ){
+        if(nationality != null){
+            return new ResponseEntity<>(driverRepository.findByNationalityEquals(nationality), HttpStatus.OK);
+        } else
         return new ResponseEntity<>(driverRepository.findAll(), HttpStatus.OK);
     }
 

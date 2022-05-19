@@ -27,4 +27,10 @@ class F1ResultsApplicationTests {
 		assertThat(driverRepository.findByRacesName("Australian Grand Prix").size()).isEqualTo(20);
 	}
 
+	@Test
+	public void testFindDistinctDriversByRacesYear() {
+		assertThat(driverRepository.findDistinctDriversByRacesYear(2021).size()).isEqualTo(20);
+	}
+
+
 }
