@@ -25,7 +25,7 @@ public class Race {
 
 
     @ManyToMany
-    @JsonIgnoreProperties({"races"})
+    @JsonIgnoreProperties({"races", "teamDrivers"})
     @JoinTable(
             name = "races_drivers",
             joinColumns = {@JoinColumn(name = "race_id", nullable = false)},
