@@ -25,13 +25,9 @@ public class Driver {
     @Column
     private String nationality;
 
-    @ManyToMany(mappedBy = "")
-    @JsonIgnoreProperties(value = "drivers")
-    @JoinTable(
-            name = "drivers_races",
-            joinColumns = {@JoinColumn(name = "driver_id", nullable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "race_id", nullable = false)}
-    )
+
+    @ManyToMany(mappedBy = "drivers")
+    @JsonIgnoreProperties({"drivers"})
     private List<Race> races;
     // todo: populate this table? Add some points and positions?
 

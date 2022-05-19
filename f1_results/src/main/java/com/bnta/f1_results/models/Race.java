@@ -3,7 +3,6 @@ package com.bnta.f1_results.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -12,7 +11,6 @@ public class Race {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
     private Long id;
 
     @Column
@@ -24,18 +22,23 @@ public class Race {
     @Column
     private int year;
 
-    @ManyToMany(mappedBy = "")
-    @JsonIgnoreProperties(value = "races")
-    private List<Driver> raceDrivers;
+
+    @ManyToMany
+    @JoinTable(
+            name = "races_drivers",
+            joinColumns = {@JoinColumn(name = "race_id", nullable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "driver_id", nullable = false)})
+    @JsonIgnoreProperties({"races"})
+    private List<Driver> drivers;
 
     public Race() {
     }
 
-    public Race(String name, String country, int year) {
+    public Race(String name, String country, int year, List<Driver> drivers) {
         this.name = name;
         this.country = country;
         this.year = year;
-        this.raceDrivers = new ArrayList<>();
+        this.drivers = drivers;
     }
 
     public Long getId() {
@@ -66,12 +69,12 @@ public class Race {
         this.year = year;
     }
 
-    public List<Driver> getRaceDrivers() {
-        return raceDrivers;
+    public List<Driver> getDrivers() {
+        return drivers;
     }
 
-    public void setRaceDrivers(List<Driver> raceDrivers) {
-        this.raceDrivers = raceDrivers;
+    public void setDrivers(List<Driver> drivers) {
+        this.drivers = drivers;
     }
 
     @Override
@@ -81,7 +84,7 @@ public class Race {
                 ", name='" + name + '\'' +
                 ", country='" + country + '\'' +
                 ", year=" + year +
-                ", raceDrivers=" + raceDrivers +
+                ", raceDrivers=" + drivers +
                 '}';
     }
 }
