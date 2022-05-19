@@ -3,6 +3,7 @@ package com.bnta.f1_results.controllers;
 import com.bnta.f1_results.models.Driver;
 import com.bnta.f1_results.models.Race;
 import com.bnta.f1_results.repositories.DriverRepository;
+import com.bnta.f1_results.repositories.RaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,7 +39,8 @@ public class DriverController {
     ){
         if(nationality != null){
             return new ResponseEntity<>(driverRepository.findByNationalityEquals(nationality), HttpStatus.OK);
-        } else
+        }
+        else
         return new ResponseEntity<>(driverRepository.findAll(), HttpStatus.OK);
     }
 

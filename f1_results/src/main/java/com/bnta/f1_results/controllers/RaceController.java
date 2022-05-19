@@ -1,7 +1,9 @@
 package com.bnta.f1_results.controllers;
 
 
+import com.bnta.f1_results.models.Driver;
 import com.bnta.f1_results.models.Race;
+import com.bnta.f1_results.repositories.DriverRepository;
 import com.bnta.f1_results.repositories.RaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,10 +20,26 @@ public class RaceController {
     @Autowired
     private RaceRepository raceRepository;
 
+    @Autowired
+    private DriverRepository driverRepository;
+
     // INDEX
+//    @GetMapping
+//    public ResponseEntity<List<Race>> getRaces() {
+//        return new ResponseEntity<>(raceRepository.findAll(), HttpStatus.OK);
+//    }
+
+    // INDEX AND FILTERS
+    // GET /races?year=2022
     @GetMapping
-    public ResponseEntity<List<Race>> getRaces() {
-        return new ResponseEntity<>(raceRepository.findAll(), HttpStatus.OK);
+    public ResponseEntity<List<Race>> getAllDriversAndFilters(
+            @RequestParam(required = false, name = "year") Integer year
+    ){
+        if(year != null){
+            return new ResponseEntity<>(raceRepository.findRaceByYear(year), HttpStatus.OK);
+        }
+        else
+            return new ResponseEntity<>(raceRepository.findAll(), HttpStatus.OK);
     }
 
     // SHOW
