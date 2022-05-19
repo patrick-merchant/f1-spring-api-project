@@ -1,12 +1,9 @@
 package com.bnta.f1_results;
 
-import com.bnta.f1_results.models.Driver;
-import com.bnta.f1_results.models.Team;
 import com.bnta.f1_results.repositories.DriverRepository;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import com.bnta.f1_results.repositories.RaceRepository;
-import com.bnta.f1_results.repositories.TeamRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
