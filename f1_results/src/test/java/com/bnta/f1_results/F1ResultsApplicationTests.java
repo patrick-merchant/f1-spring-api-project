@@ -22,4 +22,9 @@ class F1ResultsApplicationTests {
 		assertThat(driverRepository.findByNationalityEquals("German").size()).isEqualTo(3);
 	}
 
+	@Test
+	public void testFindByRacesName() {
+		assertThat(driverRepository.findByRacesName("Australian Grand Prix").size()).isEqualTo(20);
+	}
+
 }

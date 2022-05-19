@@ -9,4 +9,6 @@ public interface DriverRepository extends JpaRepository<Driver, Long> {
 
 // first derived query - find driver by country
     List<Driver> findByNationalityEquals(String nationality);
+
+    List<Driver> findByRacesName(String name);
 }
