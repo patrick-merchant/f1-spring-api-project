@@ -18,7 +18,7 @@ public class Team {
     private String name;
 
     @OneToMany(mappedBy = "team")
-    @JsonIgnoreProperties({"team"})
+    @JsonIgnoreProperties({"team", "races"})
     private List<Driver> teamDrivers;
 
     // TODO: 18/05/2022 Work out how this list is populated
